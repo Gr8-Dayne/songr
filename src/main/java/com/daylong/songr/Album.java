@@ -7,25 +7,29 @@ public class Album {
     public String albumArtist;
     private int albumSongCount;
     private double albumLength;
-//    img bufferedimage;
+    public String albumCover;
 
-    public Album(String albumTitle, String albumArtist, int albumSongCount, double albumLength) {
+    public Album(String albumTitle, String albumArtist, int albumSongCount, double albumLength, String albumCover) {
         this.albumTitle = albumTitle;
         this.albumArtist = albumArtist;
         this.albumSongCount = albumSongCount;
         this.albumLength = albumLength;
-//        this.img = URL;
+        this.albumCover = albumCover;
     }
 
-    public int getAlbumSongCount(){
-        return this.albumSongCount;
+    public String getAlbumCover(){
+        return this.albumCover;
     }
 
-    public double getAlbumLength(){
-        return this.albumLength;
+    public String getAlbumSongCount(){
+        return "Songs in album: " + this.albumSongCount;
+    }
+
+    public String getAlbumLength(){
+        return "Total album run time: " + this.albumLength;
     }
 
     public String toString(){
-        return String.format("%s : was created by : %s", this.albumTitle, this.albumArtist);
+        return String.format("%s :: created by %s.", this.albumTitle, this.albumArtist);
     }
 }

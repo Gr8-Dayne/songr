@@ -8,12 +8,17 @@
 <body>
 <h1>Daft Punk Albums</h1>
 <ul>
-    <li th:each="Albums : ${daftAlbums}">
-        <!--Get Album(s)-->
+    <li th:each="album : ${albumsPunk}">
+        <!--Display album artwork-->
+        <img th:img="${album.albumCover}">
+
+        <!--Display album information-->
         <span th:text="${album}"></span>
-        <!--Get total album song count-->
+
+        <!--Display total album song count-->
         <span th:text="${album.albumSongCount}"></span>
-        <!--Get total album run time-->
+
+        <!--Display total album run time-->
         <span th:text="${album.albumLength}"></span>
     </li>
 </ul>

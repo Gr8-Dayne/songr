@@ -1,3 +1,12 @@
+* {
+background-color: black;
+color: white;
+}
+
+body{
+text-align: center;
+}
+
 h1 {
 color: purple;
 }
