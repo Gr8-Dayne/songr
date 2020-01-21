@@ -7,10 +7,11 @@
 </head>
 <body>
 <h1>Daft Punk Albums</h1>
-<ul>
+<ul id="albumList">
     <li th:each="album : ${albumsPunk}">
+
         <!--Display album artwork-->
-        <img th:img="${album.albumCover}">
+        <img th:src="${album.albumCover}">
 
         <!--Display album information-->
         <span th:text="${album}"></span>
@@ -20,6 +21,7 @@
 
         <!--Display total album run time-->
         <span th:text="${album.albumLength}"></span>
+
     </li>
 </ul>
 </body>

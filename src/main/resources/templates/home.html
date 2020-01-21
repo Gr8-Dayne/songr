@@ -2,14 +2,13 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Home Page</title>
+    <title>Home</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 <h1>Welcome to my home page!</h1>
 <h2> Hello there,
     <span th:if="${user} != null" th:text="${user}"></span>
-    <span th:unless="${user} != null">New User</span>
 </h2>
 </body>
 </html>
