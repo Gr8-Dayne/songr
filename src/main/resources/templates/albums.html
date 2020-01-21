@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Albums</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<h1>Daft Punk Albums</h1>
+<ul>
+    <li th:each="Albums : ${daftAlbums}">
+        <!--Get Album(s)-->
+        <span th:text="${album}"></span>
+        <!--Get total album song count-->
+        <span th:text="${album.albumSongCount}"></span>
+        <!--Get total album run time-->
+        <span th:text="${album.albumLength}"></span>
+    </li>
+</ul>
+</body>
+</html>
