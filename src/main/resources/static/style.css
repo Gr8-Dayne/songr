@@ -12,12 +12,14 @@ color: purple;
 }
 
 #albumList {
-border: 2px dashed #f69c55;
+height: 95vh;
+width: 80%;
+border: 2px dashed gold;
 display: inline-block;
-vertical-align: middle;
+vertical-align: text: middle;
 line-height: normal;
 list-style: none;
-text-decoration: underline;
+text-decoration: bold;
 }
 
 
