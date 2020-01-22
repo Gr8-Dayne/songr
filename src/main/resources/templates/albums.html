@@ -7,32 +7,41 @@
 </head>
 <body>
 <h1>Daft Punk Albums</h1>
-<ul id="albumList">
-    <li th:each="album : ${albumsPunk}">
-
-        <!--Display album artwork-->
-        <img th:src="${album.albumCover}">
-
-        <!--Display album information-->
-        <span th:text="${album}"></span>
-
-        <!--Display total album song count-->
-        <span th:text="${album.albumSongCount}"></span>
-
-        <!--Display total album run time-->
-        <span th:text="${album.albumLength}"></span>
-
-    </li>
-</ul>
 
 <form action="/albums" method="post">
-    <input type="text" name="title">
-    <input type="text" name="artist">
-    <input type="text" name="songs">
-    <input type="text" name="length">
-    <input type="text" name="url">
+    <legend>Add a NEW Album</legend>
+    <input type="text" name="title" placeholder="Album Title">
+    <input type="text" name="artist" placeholder="Artist">
+    <input type="text" name="songs" placeholder="Number of Songs">
+    <input type="text" name="length" placeholder="Total Length">
+    <input type="text" name="url" placeholder="Img URL">
     <input type="submit">
 </form>
+
+<ul id="albumList"  th:each="album : ${albumsPunk}">
+    <li>
+        <!--Display album artwork-->
+        <img th:src="${album.albumCover}">
+    </li>
+        <!--Display album information-->
+<!--        <span th:text="${album}"></span>-->
+    <li>
+        <!--Display total album song count-->
+        <span th:text="${album.albumTitle}"></span>
+    </li>
+    <li>
+        <!--Display total album song count-->
+        <span th:text="${album.albumArtist}"></span>
+    </li>
+    <li>
+        <!--Display total album song count-->
+        <span th:text="${album.albumSongCount}"></span>
+    </li>
+    <li>
+        <!--Display total album run time-->
+        <span th:text="${album.albumLength}"></span>
+    </li>
+</ul>
 
 </body>
 </html>

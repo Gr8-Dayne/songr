@@ -5,16 +5,27 @@ color: white;
 
 body{
 text-align: center;
+margin: 0;
+padding: 0;
 }
 
 h1 {
 color: purple;
 }
 
+#homeButton{
+height: 30px;
+width: px;
+color: black;
+background-color: hotpink;
+}
+
 #albumList {
-height: 95vh;
-width: 80%;
-border: 2px dashed gold;
+margin: auto auto;
+padding: 0;
+height: 80vh;
+width: 98vw;
+border: 1px dashed gold;
 display: inline-block;
 vertical-align: text: middle;
 line-height: normal;
