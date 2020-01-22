@@ -5,10 +5,14 @@
     <title>Home</title>
     <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
-<body>
-<h1>Welcome to my home page!</h1>
-<h2> Hello there,
-    <span th:if="${user} != null" th:text="${user}"></span>
-</h2>
-</body>
+<!--This site helped me with CSS: https://www.tutorialrepublic.com/faq/how-to-position-text-over-an-image-using-css.php-->
+    <body id="homeBody">
+        <img id="uncleSam" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Uncle_Sam_%28pointing_finger%29.jpg/891px-Uncle_Sam_%28pointing_finger%29.jpg">
+        <div id="homeDiv">
+            <h1>Are YOU ready to ROCK?</h1>
+            <form>
+                <button id="homeButton" formaction="/albums">An Album Cover</button>
+            </form>
+        </div>
+    </body>
 </html>

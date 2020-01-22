@@ -6,33 +6,45 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<h1>Daft Punk Albums</h1>
-<ul id="albumList">
-    <li th:each="album : ${albumsPunk}">
+<h1>Albums for Days</h1>
 
-        <!--Display album artwork-->
-        <img th:src="${album.albumCover}">
-
-        <!--Display album information-->
-        <span th:text="${album}"></span>
-
-        <!--Display total album song count-->
-        <span th:text="${album.albumSongCount}"></span>
-
-        <!--Display total album run time-->
-        <span th:text="${album.albumLength}"></span>
-
-    </li>
-</ul>
-
-<form action="/albums" method="post">
-    <input type="text" name="title">
-    <input type="text" name="artist">
-    <input type="text" name="songs">
-    <input type="text" name="length">
-    <input type="text" name="url">
+<form id="addAlbumForm" action="/albums" method="post">
+    <legend>Add a NEW Album</legend>
+    <input type="text" name="title" placeholder="Album Title">
+    <input type="text" name="artist" placeholder="Artist">
+    <input type="text" name="songs" placeholder="Number of Songs">
+    <input type="text" name="length" placeholder="Total Length">
+    <input type="text" name="url" placeholder="Img URL">
     <input type="submit">
 </form>
+
+<ul id="albumList"  th:each="album : ${albumsPunk}">
+    <li>
+        <!--Display album artwork-->
+        <img th:src="${album.albumCover}">
+    </li>
+    <li>
+        <!--Display total album song count-->
+        <span th:text="${album.albumTitle}"></span>
+    </li>
+    <li>
+        <!--Display total album song count-->
+        <span th:text="${album.albumArtist}"></span>
+    </li>
+    <li>
+        <!--Display total album song count-->
+        <span th:text="${album.albumSongCount}"></span>
+    </li>
+    <li>
+        <!--Display total album run time-->
+        <span th:text="${album.albumLength}"></span>
+    </li>
+    <li>
+        <!--Button to remove albums from database-->
+        <button id="deleteButton">Remove</button>
+        <!--<a href = "delete.php?id='$id'"><input type='button' value='DELETE' name='Remove Album'/></a>-->
+    </li>
+</ul>
 
 </body>
 </html>
