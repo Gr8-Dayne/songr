@@ -19,8 +19,7 @@ import java.util.List;
     @Autowired
     AlbumRepo albumRepo;
 
-    @GetMapping("/") public String getHomePage(@RequestParam(defaultValue = "GENERAL KANOBI", required=false) String user, Model m){
-        m.addAttribute("user", user);
+    @GetMapping("/") public String getHomePage(){
         return "home";
     }
 
@@ -38,14 +37,18 @@ import java.util.List;
 //                new Album("Human After All", "Daft Punk", 10, 45.38, "https://upload.wikimedia.org/wikipedia/en/thumb/0/0d/Humanafterall.jpg/220px-Humanafterall.jpg"),
 //                new Album( "Homework", "Daft Punk", 16, 73.53, "https://static.raru.co.za/cover/2014/05/03/135503-m.jpg?v=1399102231")
 //        };
-        List<Album> daftAlbums = albumRepo.findAll();
-        m.addAttribute("albumsPunk", daftAlbums);
+        List<Album> albums = albumRepo.findAll();
+        m.addAttribute("albumsPunk", albums);
         return "albums";
     }
 
-    @PostMapping("/albums") public RedirectView postAlbums(String albumTitle, String albumArtist, int albumsSongs, double albumLength, String albumCover){
-        Album newAlbum = new Album(albumTitle, albumArtist, albumsSongs, albumLength, albumCover);
+    @PostMapping("/albums") public RedirectView postAlbums(String title, String artist, int songs, double length, String url){
+        Album newAlbum = new Album(title, artist, songs, length, url);
         albumRepo.save(newAlbum);
         return new RedirectView("/albums");
     }
+
+//    @GetMapping("/error") public String errorOccurred(){
+//        return "error";
+//    }
 }

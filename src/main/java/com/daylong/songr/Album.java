@@ -35,6 +35,10 @@ public class Album {
 
     }
 
+    public String toString(){
+        return String.format("%s :: created by %s.", this.albumTitle, this.albumArtist);
+    }
+
     public String getAlbumCover(){
         return this.albumCover;
     }
@@ -45,9 +49,5 @@ public class Album {
 
     public String getAlbumLength(){
         return "Total album run time: " + this.albumLength;
-    }
-
-    public String toString(){
-        return String.format("%s :: created by %s.", this.albumTitle, this.albumArtist);
     }
 }

@@ -9,23 +9,55 @@ margin: 0;
 padding: 0;
 }
 
+html{
+text-align: center;
+}
+
 h1 {
-color: purple;
+margin-top: 40px;
+color: red;
+}
+
+#homeBody{
+position: relative;
+display: inline-block;
+margin: 0 auto;
+}
+
+#homeBody #homeDiv{
+position: absolute;
+z-index: 999;
+margin: 0 auto;
+left: 0;
+right: 0;
+text-align: center;
+top: 30%;
+background: rgba(0, 0, 0);
+font-family: Arial,sans-serif;
+color: #fff;
+width: 70%;
+}
+
+#uncleSam{
+filter: brightness(50%);
 }
 
 #homeButton{
 height: 30px;
-width: px;
+width: 80px;
 color: black;
 background-color: hotpink;
+margin-bottom: 30px;
+}
+
+#addAlbumForm{
+margin: 40px;
 }
 
 #albumList {
 margin: auto auto;
 padding: 0;
-height: 80vh;
 width: 98vw;
-border: 1px dashed gold;
 display: inline-block;
 vertical-align: text: middle;
 line-height: normal;
