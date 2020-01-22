@@ -1,7 +1,20 @@
 package com.daylong.songr;
 
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
+@Entity
 public class Album {
+
+    // Id makes primary key of table
+    @Id
+    // GeneratedValue Starts at one and increments
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    long id;
 
     public String albumTitle;
     public String albumArtist;
@@ -15,6 +28,11 @@ public class Album {
         this.albumSongCount = albumSongCount;
         this.albumLength = albumLength;
         this.albumCover = albumCover;
+    }
+
+    // Empty Constructor
+    public Album(){
+
     }
 
     public String getAlbumCover(){
