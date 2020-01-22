@@ -12,7 +12,7 @@ public class Album {
 
     // Id makes primary key of table
     @Id
-    //
+    // GeneratedValue Starts at one and increments
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
