@@ -1,10 +1,8 @@
 package com.daylong.songr;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -15,6 +13,9 @@ public class Album {
     // GeneratedValue Starts at one and increments
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
+
+    @OneToMany(mappedBy = "album")
+    public List<AlbumSongs> albumSongs;
 
     public String albumTitle;
     public String albumArtist;
@@ -49,5 +50,9 @@ public class Album {
 
     public String getAlbumLength(){
         return "Total album run time: " + this.albumLength;
+    }
+
+    public long getId(){
+        return id;
     }
 }
