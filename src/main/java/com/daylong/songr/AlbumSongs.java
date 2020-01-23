@@ -15,6 +15,8 @@ public class AlbumSongs {
 
     public String songName;
     public int songDuration;
+    public long trackNumber;
+    public String Album;
 
     public AlbumSongs(){
 
@@ -25,10 +27,21 @@ public class AlbumSongs {
         this.songName = songName;
         this.songDuration = songDuration;
         this.songDuration = songDuration;
+        this.trackNumber = trackNumber;
+        this.trackNumber = trackNumber;
+        this.Album = Album;
+        this.Album = Album;
     }
 
     @Override
     public String toString() {
-        return "AlbumSongs{" + "id=" + id + ", album=" + album + ", songName='" + songName + '\'' + ", songDuration=" + songDuration + '}';
+        return "AlbumSongs{" +
+                "id=" + id +
+                ", album=" + album +
+                ", songName='" + songName + '\'' +
+                ", songDuration=" + songDuration +
+                ", trackNumber=" + trackNumber +
+                ", Album='" + Album + '\'' +
+                '}';
     }
 }
