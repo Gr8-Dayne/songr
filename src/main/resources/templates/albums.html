@@ -36,12 +36,27 @@
         <span th:text="${album.albumSongCount}"></span>
     </li>
     <li>
+        <!--Display album song individually-->
+        <span th:text="${album.AlbumSongs.songName}"></span>
+    </li>
+    <li>
         <!--Display total album run time-->
         <span th:text="${album.albumLength}"></span>
     </li>
     <li>
+
+        <form th:action="'/albums" method="POST">
+            <legend>Add a Song</legend>
+            <input type="hidden" th:name="${album.id}" name="id">
+            <input type="text" name="songName">
+            <input type="text" name="songDuration">
+            <input type="submit" value="addSong">
+        </form>
+
         <!--Button to remove albums from database-->
-        <button id="deleteButton">Remove</button>
+        <form th:action="'/albums/delete/' + ${album.id}" method="POST">
+            <button id="deleteButton">Delete</button>
+        </form>
         <!--<a href = "delete.php?id='$id'"><input type='button' value='DELETE' name='Remove Album'/></a>-->
     </li>
 </ul>
