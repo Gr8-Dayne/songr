@@ -14,23 +14,39 @@ public class AlbumSongs {
     Album album;
 
     public String songName;
-    public int songDuration;
-    public long trackNumber;
-    public String Album;
+    public double songDuration;
+    public int trackNumber;
 
     public AlbumSongs(){
 
     }
 
-    public AlbumSongs(String songName, int songDuration){
-        this.songName = songName;
+    public AlbumSongs(Long id, String songName, double songDuration, int trackNumber, Album album){
+        this.id = id;
         this.songName = songName;
         this.songDuration = songDuration;
-        this.songDuration = songDuration;
         this.trackNumber = trackNumber;
-        this.trackNumber = trackNumber;
-        this.Album = Album;
-        this.Album = Album;
+        this.album = album;
+    }
+
+    public long getId(){
+        return this.id;
+    }
+
+    public String getSongName(){
+        return "SongName: " + songName;
+    }
+
+    public double getSongDuration(){
+        return this.songDuration;
+    }
+
+    public int getTrackNumber(){
+        return this.trackNumber;
+    }
+
+    public String getSongsAlbum(){
+        return this.album.toString();
     }
 
     @Override
@@ -41,7 +57,6 @@ public class AlbumSongs {
                 ", songName='" + songName + '\'' +
                 ", songDuration=" + songDuration +
                 ", trackNumber=" + trackNumber +
-                ", Album='" + Album + '\'' +
                 '}';
     }
 }

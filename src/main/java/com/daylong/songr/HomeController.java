@@ -19,6 +19,9 @@ import java.util.List;
     @Autowired
     AlbumRepo albumRepo;
 
+    @Autowired
+    AlbumSongsRepo albumSongsRepo;
+
     @GetMapping("/") public String getHomePage(){
         return "home";
     }
@@ -63,9 +66,8 @@ import java.util.List;
         return new RedirectView("/albums");
     }
 
-
-
     @PostMapping ("/albums/delete/") public RedirectView deleteAnAlbum(@PathVariable long id){
+
         System.out.println("Trying to erase" + id);
 
         albumRepo.deleteById(id);
@@ -73,15 +75,26 @@ import java.util.List;
         return new RedirectView( "/albumsSomething");
     }
 
-    @PostMapping("/songs") public RedirectView postAlbumSongs(Long id, String songTitle, int songDuration){
+    @PostMapping("/songs") public RedirectView postAlbumSongs(Long id, String songName, double songDuration, int trackNumber, Album album){
 
         Album myAlbum = albumRepo.getOne(id);
 
-        AlbumSongs newSong = new AlbumSongs(songTitle, songDuration);
+        AlbumSongs newSong = new AlbumSongs(id, songName, songDuration, trackNumber, album);
 
-        newSong.album
+        newSong.album = myAlbum;
+
+        albumSongsRepo.save(newSong);
 
         return new RedirectView("/songs");
+    }
+
+    @PostMapping ("/songs/delete/") public RedirectView deleteASong(@PathVariable long id){
+
+        System.out.println("Trying to erase" + id);
+
+        albumSongsRepo.deleteById(id);
+
+        return new RedirectView( "/songsSomething");
     }
 
 //    @GetMapping("/error") public String errorOccurred(){

@@ -15,13 +15,14 @@ public class Album {
     long id;
 
     @OneToMany(mappedBy = "album")
+
     public List<AlbumSongs> albumSongs;
 
-    public String albumTitle;
-    public String albumArtist;
+    private String albumTitle;
+    private String albumArtist;
     private int albumSongCount;
     private double albumLength;
-    public String albumCover;
+    private String albumCover;
 
     public Album(String albumTitle, String albumArtist, int albumSongCount, double albumLength, String albumCover) {
         this.albumTitle = albumTitle;
@@ -42,6 +43,14 @@ public class Album {
 
     public String getAlbumCover(){
         return this.albumCover;
+    }
+
+    public String getAlbumTitle(){
+        return this.albumTitle;
+    }
+
+    public String getAlbumArtist(){
+        return this.albumArtist;
     }
 
     public String getAlbumSongCount(){

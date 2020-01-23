@@ -10,11 +10,11 @@
 
 <form id="addAlbumForm" action="/albums" method="post">
     <legend>Add a NEW Album</legend>
-    <input type="text" name="title" placeholder="Album Title">
-    <input type="text" name="artist" placeholder="Artist">
-    <input type="text" name="songs" placeholder="Number of Songs">
-    <input type="text" name="length" placeholder="Total Length">
-    <input type="text" name="url" placeholder="Img URL">
+    <input type="text" name="title" placeholder="Album Title" required>
+    <input type="text" name="artist" placeholder="Artist" required>
+    <input type="text" name="songs" placeholder="Number of Songs" required>
+    <input type="text" name="length" placeholder="Total Length" required>
+    <input type="text" name="url" placeholder="Img URL" required>
     <input type="submit">
 </form>
 
@@ -36,30 +36,31 @@
         <span th:text="${album.albumSongCount}"></span>
     </li>
     <li>
-        <!--Display album song individually-->
-        <span th:text="${album.AlbumSongs.songName}"></span>
-    </li>
-    <li>
         <!--Display total album run time-->
         <span th:text="${album.albumLength}"></span>
     </li>
     <li>
-
-        <form th:action="'/albums" method="POST">
+        <!--Display album song individually-->
+        <span th:text="${album.AlbumSongs.songName}"></span>
+        <form th:action="'/albums/delete/' + ${song.id}" method="POST">
+            <button class="deleteButton">Delete Song</button>
+        </form>
+    </li>
+    <li>
+        <form th:action="/albums" method="POST">
             <legend>Add a Song</legend>
-            <input type="hidden" th:name="${album.id}" name="id">
-            <input type="text" name="songName">
-            <input type="text" name="songDuration">
-            <input type="long" name="trackNumber">
-            <input type="text" name="Album">
-            <input type="submit" value="addSong">
+            <input type="hidden" th:name="${album.id}" name="id" required>
+            <input type="text" name="songName" required>
+            <input type="double" name="songDuration" required>
+            <input type="long" name="trackNumber" required>
+            <input type="text" name="Album" required>
+            <input type="submit" value="addSong" required>
         </form>
 
         <!--Button to remove albums from database-->
         <form th:action="'/albums/delete/' + ${album.id}" method="POST">
-            <button id="deleteButton">Delete</button>
+            <button class="deleteButton">Delete Album</button>
         </form>
-        <!--<a href = "delete.php?id='$id'"><input type='button' value='DELETE' name='Remove Album'/></a>-->
     </li>
 </ul>
 
