@@ -81,7 +81,7 @@ import java.util.List;
 
         AlbumSongs newSong = new AlbumSongs(id, songName, songDuration, trackNumber, album);
 
-        newSong.album = myAlbum;
+        newSong.songParent = myAlbum;
 
         albumSongsRepo.save(newSong);
 

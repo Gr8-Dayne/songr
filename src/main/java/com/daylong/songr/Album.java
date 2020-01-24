@@ -37,10 +37,6 @@ public class Album {
 
     }
 
-    public String toString(){
-        return String.format("%s :: created by %s.", this.albumTitle, this.albumArtist);
-    }
-
     public String getAlbumCover(){
         return this.albumCover;
     }
@@ -63,5 +59,18 @@ public class Album {
 
     public long getId(){
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Album{" +
+                "id=" + id +
+                ", albumSongs=" + albumSongs +
+                ", albumTitle='" + albumTitle + '\'' +
+                ", albumArtist='" + albumArtist + '\'' +
+                ", albumSongCount=" + albumSongCount +
+                ", albumLength=" + albumLength +
+                ", albumCover='" + albumCover + '\'' +
+                '}';
     }
 }
