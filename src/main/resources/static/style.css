@@ -70,4 +70,12 @@ list-style: none;
 text-decoration: bold;
 }
 
+#songAdder{
+margin: 30px;
+}
+
+.deleteButton{
+margin: 30px;
+}
+
 
