@@ -8,7 +8,7 @@
 
 To run this you can run ./gradlew test in the CLI or import the app to IntelliJ and run it from there.
 
-Used Class Demos as references and examples.
+Used Class Demos as references and online research is sited where it was initially used.
 
 #### Credit
 
