@@ -15,15 +15,16 @@ public class Album {
     long id;
 
     @OneToMany(mappedBy = "album")
-    public List<AlbumSongs> albumSongs;
 
-    public String albumTitle;
-    public String albumArtist;
-    private int albumSongCount;
-    private double albumLength;
-    public String albumCover;
+    public List<AlbumSongs> songsFromAlbum;
 
-    public Album(String albumTitle, String albumArtist, int albumSongCount, double albumLength, String albumCover) {
+    private String albumTitle;
+    private String albumArtist;
+    private Integer albumSongCount;
+    private Integer albumLength;
+    private String albumCover;
+
+    public Album(String albumTitle, String albumArtist, Integer albumSongCount, Integer albumLength, String albumCover) {
         this.albumTitle = albumTitle;
         this.albumArtist = albumArtist;
         this.albumSongCount = albumSongCount;
@@ -36,12 +37,16 @@ public class Album {
 
     }
 
-    public String toString(){
-        return String.format("%s :: created by %s.", this.albumTitle, this.albumArtist);
-    }
-
     public String getAlbumCover(){
         return this.albumCover;
+    }
+
+    public String getAlbumTitle(){
+        return this.albumTitle;
+    }
+
+    public String getAlbumArtist(){
+        return this.albumArtist;
     }
 
     public String getAlbumSongCount(){
@@ -54,5 +59,18 @@ public class Album {
 
     public long getId(){
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Album{" +
+                "id=" + id +
+                ", albumSongs=" + songsFromAlbum +
+                ", albumTitle='" + albumTitle + '\'' +
+                ", albumArtist='" + albumArtist + '\'' +
+                ", albumSongCount=" + albumSongCount +
+                ", albumLength=" + albumLength +
+                ", albumCover='" + albumCover + '\'' +
+                '}';
     }
 }

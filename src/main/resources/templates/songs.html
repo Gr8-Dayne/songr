@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${album.albumTitle}">Songs</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<h1>Songs from the album: <span th:text="${album.albumTitle}"></span></h1>
+<ul>
+<!--    Credit: https://www.baeldung.com/thymeleaf-iteration-->
+    <li th:each="AlbumSongs, thing : ${album.songsFromAlbum}">
+        <h2><span th:text="${AlbumSongs.toString()}"></span></h2>
+        <p>YEET</p>
+    </li>
+    <li>
+        <!--Return to albums page-->
+        <form action="/albums" method="GET">
+            <button class="albumButtonTwo">Albums</button>
+        </form>
+    </li>
+</ul>
+</body>
+</html>

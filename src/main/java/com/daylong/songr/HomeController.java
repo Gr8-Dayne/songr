@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
@@ -18,6 +17,9 @@ import java.util.List;
     // This connects App to postgres. Allows us to CRUD
     @Autowired
     AlbumRepo albumRepo;
+
+    @Autowired
+    AlbumSongsRepo albumSongsRepo;
 
     @GetMapping("/") public String getHomePage(){
         return "home";
@@ -57,32 +59,57 @@ import java.util.List;
         return "albums";
     }
 
-    @PostMapping("/albums") public RedirectView postAlbums(String title, String artist, int songs, double length, String url){
+    @PostMapping("/albums") public RedirectView postAlbums(String title, String artist, Integer songs, Integer length, String url){
         Album newAlbum = new Album(title, artist, songs, length, url);
         albumRepo.save(newAlbum);
         return new RedirectView("/albums");
     }
 
+    @PostMapping ("/albums/delete/{id}") public RedirectView deleteAnAlbum(@PathVariable long id){
 
-
-    @PostMapping ("/albums/delete/") public RedirectView deleteAnAlbum(@PathVariable long id){
-        System.out.println("Trying to erase" + id);
+        System.out.println("Trying to erase album" + id);
 
         albumRepo.deleteById(id);
 
-        return new RedirectView( "/albumsSomething");
+        return new RedirectView( "/albums");
     }
 
-    @PostMapping("/songs") public RedirectView postAlbumSongs(Long id, String songTitle, int songDuration){
+    // This adds Songs to Albums
+    // Credit: Class demo on 1/23/2020
+    @GetMapping("/songs/{id}") public String showAlbumSongs(@PathVariable long id, Model TLV){
 
-        Album myAlbum = albumRepo.getOne(id);
+        Album targetAlbum = albumRepo.findById(id).get();
 
-        AlbumSongs newSong = new AlbumSongs(songTitle, songDuration);
+        TLV.addAttribute("album", targetAlbum);
 
-        newSong.album
-
-        return new RedirectView("/songs");
+        return "songs";
     }
+
+    // This adds Songs to Albums
+    // Credit: Class demo on 1/23/2020
+    @PostMapping("/songs") public RedirectView addASong(Long id, String songName, Integer songDuration, Integer trackNumber, Model TLV){
+
+        System.out.println("Trying to add song" + songName);
+
+        Album myAlbum = albumRepo.findById(id).get();
+
+        AlbumSongs newSong = new AlbumSongs(songName, songDuration, trackNumber, myAlbum);
+
+        albumSongsRepo.save(newSong);
+
+        TLV.addAttribute("album", myAlbum);
+
+        return new RedirectView("/songs/" + id);
+    }
+
+//    @PostMapping ("/songs/delete/{id}") public RedirectView deleteASong(@PathVariable long id){
+//
+//        System.out.println("Trying to erase song" + id);
+//
+//        albumSongsRepo.deleteById(id);
+//
+//        return new RedirectView( "/albums");
+//    }
 
 //    @GetMapping("/error") public String errorOccurred(){
 //        return "error";

@@ -13,22 +13,37 @@ public class AlbumSongs {
     @ManyToOne
     Album album;
 
-    public String songName;
-    public int songDuration;
+    private String songName;
+    private Integer songDuration;
+    private Integer trackNumber;
 
-    public AlbumSongs(){
+    public AlbumSongs(){}
 
+    public AlbumSongs(String songName, Integer songDuration, Integer trackNumber, Album album){
+        this.songName = songName;
+        this.songDuration = songDuration;
+        this.trackNumber = trackNumber;
+        this.album = album;
     }
 
-    public AlbumSongs(String songName, int songDuration){
-        this.songName = songName;
-        this.songName = songName;
-        this.songDuration = songDuration;
-        this.songDuration = songDuration;
+    public long getId(){
+        return this.id;
+    }
+
+    public String getSongName(){
+        return this.songName;
+    }
+
+    public Integer getSongDuration(){
+        return this.songDuration;
+    }
+
+    public int getTrackNumber(){
+        return this.trackNumber;
     }
 
     @Override
     public String toString() {
-        return "AlbumSongs{" + "id=" + id + ", album=" + album + ", songName='" + songName + '\'' + ", songDuration=" + songDuration + '}';
+        return "Track Name: " + songName + ", Track Duration: " + songDuration + ", Track Number: " + trackNumber;
     }
 }
