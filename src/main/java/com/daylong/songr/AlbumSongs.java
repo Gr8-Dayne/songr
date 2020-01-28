@@ -11,7 +11,7 @@ public class AlbumSongs {
     long id;
 
     @ManyToOne
-    Album songParent;
+    Album album;
 
     private String songName;
     private double songDuration;
